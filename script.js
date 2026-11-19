@@ -1,0 +1,13 @@
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
+toggle?.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle.setAttribute("aria-label", isOpen ? "메뉴 닫기" : "메뉴 열기");
+});
+nav?.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    toggle?.setAttribute("aria-expanded", "false");
+  });
+});
